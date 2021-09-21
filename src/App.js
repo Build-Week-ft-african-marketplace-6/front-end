@@ -8,8 +8,8 @@ import SignUpPage from './components/signUpPage';
 function App() {
   return (
     <div className="App">
-      <Route exact path="/signUpPage">
-        <SignUpPage/>
+      <Route>
+        <SignUpPage path="/signUpPage"/>
       </Route>
     </div>
   );
