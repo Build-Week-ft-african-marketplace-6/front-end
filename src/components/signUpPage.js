@@ -30,27 +30,28 @@ const StyledLabel = styled.label`
 export default function SignUpForm(props) {
     const {
         values,
-        submit,
-        change,
+        onSubmit,
+        onChange,
         disabled,
         errors
     } = props
 
     const onSubmit = evt => {
         evt.preventDefault()
-        submit()
+        onSubmit()
       }
 
       const onChange = evt => {
         const { name, value, checked, type } = evt.target
         const valueToUse = type === 'checkbox' ? checked : value;
-        change(name, valueToUse);
+        onChange(name, valueToUse);
       }
 
 
 
 return (
-<StyledForm id='signUp-form' onSubmit={onSubmit}>
+<StyledForm id='signUp-form' >
+    {/* onSubmit={onSubmit}  */}
     <div className='form-group submit'>
         <div className='errors'>
             <div>{errors}</div>
