@@ -9,29 +9,6 @@ const StyledHome = styled.div`
   padding-bottom: 5em;
 `
 
-const StyledNav = styled.nav`
-  background-color: #5CC8FF;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 2em;
-`
-const StyledH1 = styled.nav`
-  font-size: 4em;
-  color: #343633;
-`
-const NavButton = styled.button`
-  margin-right: 2em;
-  background-color: transparent;
-  border: none;
-  font-size: 2em;
-  text-decoration: none;
-  color: #343633;
-  &:hover {
-    color: #DEC1FF;
-  }
-`
-
 const StyledImg = styled.img`
   width: 50%;
   margin-top: 10em;
@@ -52,6 +29,19 @@ const StyledP = styled.p`
   margin: 0 auto;
   padding: 2em;
 `
+const NavButton = styled.button`
+  margin-top: 2em;
+  margin-right: 2em;
+  margin-left: 2em;
+  background-color: transparent;
+  border: none;
+  font-size: 2em;
+  text-decoration: none;
+  color: #DEC1FF;
+  &:hover {
+    color: #5CC8FF;
+  }
+`
 
 
 export default function Home() {
@@ -61,20 +51,22 @@ export default function Home() {
   const linkSignUp = () => {
     history.push('/signUpPage')
   }
+
+  const linkLogin = () => {
+    history.push('/Login')
+  }
   
     return (
       <StyledHome className="homePage">
-        <StyledNav>
-            <StyledH1>African Marketplace</StyledH1>
-            <div className='nav-links'>
-                <NavButton>Login</NavButton>
-                <NavButton onClick={linkSignUp}>Sign Up</NavButton>
-            </div>
-        </StyledNav>
         <StyledImg src={Image}></StyledImg>
         <StyledPBox>
-        <StyledP>Sauti African Marketplace empowers small business owners, particularly women, to improve their business and economic opportunities to grow out of poverty.</StyledP>
+          <StyledP>Sauti African Marketplace empowers small business owners, particularly women, to improve their business and economic opportunities to grow out of poverty.</StyledP>
         </StyledPBox>
+        <div>
+          <NavButton onClick={linkSignUp}>Sign Up!</NavButton>
+          <NavButton onClick={linkLogin}>Login!</NavButton>
+        </div>
       </StyledHome>
+      
     );
   }
