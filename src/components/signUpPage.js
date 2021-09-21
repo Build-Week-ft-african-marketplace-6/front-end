@@ -1,4 +1,5 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
@@ -30,28 +31,19 @@ const StyledLabel = styled.label`
 export default function SignUpForm(props) {
     const {
         values,
-        submit,
-        change,
         disabled,
-        errors
+        errors,
     } = props
 
-    const onSubmit = evt => {
-        evt.preventDefault()
-        onSubmit()
-      }
+    const history = useHistory();
 
-      const onChange = evt => {
-        const { name, value, checked, type } = evt.target
-        const valueToUse = type === 'checkbox' ? checked : value;
-        onChange(name, valueToUse);
-      }
-
-
+    const signUp = () => {
+        history.push('/Home')
+    }
+    
 
 return (
-<StyledForm id='signUp-form' >
-    {/* onSubmit={onSubmit}  */}
+<StyledForm id='signUp-form'>
     <div className='form-group submit'>
         <div className='errors'>
             <div>{errors}</div>
@@ -71,7 +63,6 @@ return (
             <input
                 id='username-input'
                 value={values}
-                onChange={onChange}
                 name='username'
                 type='text'
             />
@@ -82,7 +73,6 @@ return (
             <input
                 id='username-input'
                 value={values}
-                onChange={onChange}
                 name='password'
                 type='text'
             />
@@ -93,7 +83,6 @@ return (
             <input
                 id='first_name-input'
                 value={values}
-                onChange={onChange}
                 name='first_name'
                 type='text'
             />
@@ -104,7 +93,6 @@ return (
             <input
                 id='last_name-input'
                 value={values}
-                onChange={onChange}
                 name='last_name'
                 type='text'
             />
@@ -115,7 +103,6 @@ return (
             <input
                 id='email-input'
                 value={values}
-                onChange={onChange}
                 name='email'
                 type='text'
             />
@@ -125,14 +112,13 @@ return (
         <StyledLabel>Is your information correct?
             <input
                 value={values}
-                onChange={onChange}
                 name='information'
                 type='checkbox'
             />
         </StyledLabel>
 
         <div>
-            <button id='signUp-button' disabled={disabled}>Sign Up!</button>
+            <button onClick={signUp} id='signUp-button' disabled={disabled}>Sign Up!</button>
             <button id='cancel-button'>Cancel</button>
         </div>
 
