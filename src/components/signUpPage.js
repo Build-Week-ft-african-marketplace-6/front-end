@@ -30,8 +30,8 @@ const StyledLabel = styled.label`
 export default function SignUpForm(props) {
     const {
         values,
-        onSubmit,
-        onChange,
+        submit,
+        change,
         disabled,
         errors
     } = props
