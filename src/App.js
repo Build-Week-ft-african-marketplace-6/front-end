@@ -9,9 +9,8 @@ import Login from './Login';
 function App() {
   return (
     <div className="App">
-      <Route exact path="/signUpPage">
-        <SignUpPage/>
-        <Login />
+      <Route>
+        <SignUpPage path="/signUpPage"/>
       </Route>
     </div>
   );
