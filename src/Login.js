@@ -1,11 +1,33 @@
 import React from 'react';
 
 const Login = () => {
+
+    // const onSubmit = evt => {
+    //     evt.preventDefault()
+    //     submit()
+    //   }
+
     return (
     <div>
+
         <h1>This is the login page!</h1>
-        <h2>Hey this is where the form is gonna go!</h2>
-        <h3>add the submit button!</h3>
+        
+        <label>Username
+          <input
+            name='username'
+            type='text'
+          />
+        </label>
+
+        <label>Password
+          <input
+            name='password'
+            type='text'
+          />
+        </label>
+
+        <button>Submit</button>
+
     </div>
 )}
 
