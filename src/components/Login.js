@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const StyledForm = styled.form`
     background-color: #343633;
     padding-top: 2em;
-    padding-bottom: 16.33em;
+    padding-bottom: 14.27em;
 `
 
 const InputBackground = styled.div`
@@ -25,6 +25,15 @@ const InputBackground = styled.div`
 
 const StyledLabel = styled.label`
     margin-bottom: 1em;
+`
+const StyledH2 = styled.h2`
+    color: #343633;
+`
+const StyledH3 = styled.h3`
+    color: #343633;
+`
+const StyledH4 = styled.h4`
+    color: #343633;
 `
 
 const Login = () => {
@@ -61,10 +70,10 @@ const Login = () => {
     <StyledForm >
     {/* onSubmit={makeSubmit} */}
     <InputBackground className='form-group inputs'>
-        <h2>Welcome to the African Marketplace Login Page!</h2>
-        <h3>Please login with your required information.</h3>
+        <StyledH2>Welcome to the African Marketplace Login Page!</StyledH2>
+        <StyledH3>Please login with your required information.</StyledH3>
         
-        <h4>Username:</h4>
+        <StyledH4>Username:</StyledH4>
         <StyledLabel> 
             <input
                 id='username-input'
@@ -75,7 +84,7 @@ const Login = () => {
             />
         </StyledLabel>
 
-        <h4>Password:</h4>
+        <StyledH4>Password:</StyledH4>
         <StyledLabel> 
             <input
                 id='username-input'

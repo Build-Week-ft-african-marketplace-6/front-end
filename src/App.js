@@ -6,7 +6,15 @@ import Login from './components/Login';
 import CreateItem from './components/ItemCreation';
 import styled from 'styled-components';
 
-
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  margin-left: 1em;
+  margin-right: 1em;
+  color: #343633;
+  &:hover {
+    color: #DEC1FF;
+  }
+`
 const StyledNav = styled.nav`
   background-color: #5CC8FF;
   padding: 2em;
@@ -14,6 +22,7 @@ const StyledNav = styled.nav`
 const StyledH1 = styled.nav`
   font-size: 4em;
   color: #343633;
+  margin-bottom: .2em;
 `
 // const NavButton = styled.button`
 //   margin-right: 2em;
@@ -35,13 +44,13 @@ function App() {
             <StyledH1>African Marketplace</StyledH1>
             <div className='nav-links'>
               <nav>
-                <Link to="/signUpPage">Sign Up</Link>
-                <Link to="/Login">Login</Link>
-                <Link to="/">Home</Link>
-                <Link to="/Items">Items</Link>
-                <Link to="/CreateItem">Item Creation</Link>
-                <Link to="/ItemList">Item List</Link>
-                <Link to="/Logout">Logout</Link>
+                <StyledLink to="/signUpPage">Sign Up</StyledLink>
+                <StyledLink to="/Login">Login</StyledLink>
+                <StyledLink to="/">Home</StyledLink>
+                <StyledLink to="/Items">Items</StyledLink>
+                <StyledLink to="/CreateItem">Item Creation</StyledLink>
+                <StyledLink to="/ItemList">Item List</StyledLink>
+                <StyledLink to="/Logout">Logout</StyledLink>
                 
               </nav>
             </div>
