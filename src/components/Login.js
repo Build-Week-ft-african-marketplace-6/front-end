@@ -42,10 +42,10 @@ const Login = () => {
 //     const makeSubmit = evt => {
 //         evt.preventDefault();
 //         axiosWithAuth()
-//             .post('', signUpForm)
+//             .post('https://web-45-heroku-tb.herokuapp.com/api/auth/login', signUpForm)
 //             .then((res) => {
 //                 localStorage.getItem('token', res.data.token);
-//                 push('');
+//                 push('/');
 //             }).catch((error) => {
 //                 console.log(error);
 //             })
@@ -54,7 +54,7 @@ const Login = () => {
     const history = useHistory();
 
     const loginSubmit = () => {
-        history.push('/Home')
+        history.push('/items')
     };
 
     return (

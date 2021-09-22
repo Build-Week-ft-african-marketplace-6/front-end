@@ -32,9 +32,9 @@ const StyledLabel = styled.label`
 const initialFormValues = {
     username: '',
     password: '',
-    first_name: '',
-    last_name: '',
-    email: '',
+    // first_name: '',
+    // last_name: '',
+    // email: '',
 }
 
 export default function SignUpForm() {
@@ -53,19 +53,25 @@ export default function SignUpForm() {
         const newPerson = {
             username: formValues.username,
             password: formValues.password,
-            first_name: formValues.first_name,
-            last_name: formValues.last_name,
-            email: formValues.email,
+            // first_name: formValues.first_name,
+            // last_name: formValues.last_name,
+            // email: formValues.email,
             
         }
-        axios.post("", newPerson)
+        axios.post("https://web-45-heroku-tb.herokuapp.com/api/auth/register", newPerson)
         .then(res => {
             console.log(res);
         })
-    };
+        .catch((error) => {
+            console.log('this is the error',error);
+            })
+   
+        
+        };
 
-    const signUp = () => {
-        history.push('/Home')
+    const signUp = (evt) => {
+        evt.preventDefault();
+        history.push('/')
     };
     
 
@@ -98,7 +104,7 @@ return (
             />
         </StyledLabel>
 
-        <h4>First Name:</h4>
+        {/* <h4>First Name:</h4>
         <StyledLabel> 
             <input
                 id='first_name-input'
@@ -129,7 +135,7 @@ return (
                 name='email'
                 type='text'
             />
-        </StyledLabel>
+        </StyledLabel> */}
 
         
         <StyledLabel>Is your information correct?
@@ -140,7 +146,8 @@ return (
         </StyledLabel>
 
         <div>
-            <button onClick={signUp} id='signUp-button'>Sign Up!</button>
+            <button onClick={signUp} type="submit" id='signUp-button'>Sign Up!</button>
+            
             <button id='cancel-button'>Cancel</button>
         </div>
 
