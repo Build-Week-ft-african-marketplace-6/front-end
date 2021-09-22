@@ -1,8 +1,8 @@
 import './App.css';
 // import styled from 'styled-components';
 
-import React, { useState } from 'react';
-import {Route, Switch, Link} from 'react-router-dom';
+import React, {  } from 'react';
+import {Route, Switch, Link, BrowserRouter as Router} from 'react-router-dom';
 import { useHistory } from 'react-router'
 
 
@@ -13,7 +13,6 @@ import Logout from './components/Logout';
 import CreateItem from './components/CreateItem';
 import ItemList from './components/ItemList';
 import PrivateRoute from './components/PrivateRoute';
-import Items from './components/items';
 
 
 
@@ -58,6 +57,7 @@ export default function App() {
 
 
   return (
+    <Router>
     <div className="App">
       
 
@@ -92,7 +92,7 @@ export default function App() {
       </div>
   
   
-  
+      </Router>
   );
 }
 
