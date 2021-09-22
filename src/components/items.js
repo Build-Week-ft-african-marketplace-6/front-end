@@ -3,12 +3,12 @@ import { useParams, useHistory } from 'react-router';
 import axios from 'axios';
 
 
-const Item = (props) => {
+const Items = (props) => {
     const [ item, setItem ] = useState({})
     const { id } = props.match.params
 
     useEffect(() => {
-        axios.get(`'HEROKU ENDPOINT w/${id}`)
+        axios.get(`https://web-45-heroku-tb.herokuapp.com/api/items/${id}`)
         .then(res => {
             setItem(res.data)
         })
@@ -28,4 +28,4 @@ return(
 )
 }
 
-export default Item
+export default Items
