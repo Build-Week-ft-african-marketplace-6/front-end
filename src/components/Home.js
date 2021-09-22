@@ -11,7 +11,7 @@ const StyledHome = styled.div`
 
 const StyledImg = styled.img`
   width: 50%;
-  margin-top: 10em;
+  margin-top: 7em;
   margin-bottom: 4em;
   border: 10px solid #DEC1FF;
   border-radius: 10px;
@@ -46,15 +46,15 @@ const NavButton = styled.button`
 
 export default function Home() {
 
-  const history = useHistory();
+  // const history = useHistory();
 
-  const linkSignUp = () => {
-    history.push('/signUpPage')
-  }
+  // const linkSignUp = () => {
+  //   history.push('/signUpPage')
+  // }
 
-  const linkLogin = () => {
-    history.push('/Login')
-  }
+  // const linkLogin = () => {
+  //   history.push('/Login')
+  // }
   
     return (
       <StyledHome className="homePage">
@@ -63,8 +63,8 @@ export default function Home() {
           <StyledP>Sauti African Marketplace empowers small business owners, particularly women, to improve their business and economic opportunities to grow out of poverty.</StyledP>
         </StyledPBox>
         <div>
-          <NavButton onClick={linkSignUp}>Sign Up!</NavButton>
-          <NavButton onClick={linkLogin}>Login!</NavButton>
+          {/* <NavButton onClick={linkSignUp}>Sign Up!</NavButton>
+          <NavButton onClick={linkLogin}>Login!</NavButton> */}
         </div>
       </StyledHome>
       
