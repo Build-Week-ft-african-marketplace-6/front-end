@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
     background-color: #343633;
     padding-top: 2em;
-    padding-bottom: 16.33em;
+    padding-bottom: 14.27em;
 `
 
 const InputBackground = styled.div`
@@ -26,54 +26,77 @@ const InputBackground = styled.div`
 const StyledLabel = styled.label`
     margin-bottom: 1em;
 `
+const StyledH2 = styled.h2`
+    color: #343633;
+`
+const StyledH3 = styled.h3`
+    color: #343633;
+`
+const StyledH4 = styled.h4`
+    color: #343633;
+`
 
-const Login = (props) => {
-    const {
-        values,
-        disabled,
-        errors,
-    } = props
+const Login = () => {
+//     const [signUpForm, setSignUpForm] = useState({
+//         username: '',
+//         password: '',
+//     });
+
+//     const makeChange = evt => {
+//         setSignUpForm({
+//             ...signUpForm, [evt.target.name]: evt.target.value,
+//         })
+//     };
+
+//     const makeSubmit = evt => {
+//         evt.preventDefault();
+//         axiosWithAuth()
+//             .post('https://web-45-heroku-tb.herokuapp.com/api/auth/login', signUpForm)
+//             .then((res) => {
+//                 localStorage.getItem('token', res.data.token);
+//                 push('/');
+//             }).catch((error) => {
+//                 console.log(error);
+//             })
+//     };
 
     const history = useHistory();
 
     const loginSubmit = () => {
-        history.push('/Home')
-    }
+        history.push('/items')
+    };
 
     return (
-    <StyledForm>
-
-        <div className='errors'>
-            <div>{errors}</div>
-            <div>{errors}</div>
-        </div>
-
+    <StyledForm >
+    {/* onSubmit={makeSubmit} */}
     <InputBackground className='form-group inputs'>
-        <h2>Welcome to the African Marketplace Login Page!</h2>
-        <h3>Please login with your required information.</h3>
+        <StyledH2>Welcome to the African Marketplace Login Page!</StyledH2>
+        <StyledH3>Please login with your required information.</StyledH3>
         
-        <h4>Username:</h4>
+        <StyledH4>Username:</StyledH4>
         <StyledLabel> 
             <input
                 id='username-input'
-                value={values}
+                // value={signUpForm.username}
+                // onChange={makeChange}
                 name='username'
                 type='text'
             />
         </StyledLabel>
 
-        <h4>Password:</h4>
+        <StyledH4>Password:</StyledH4>
         <StyledLabel> 
             <input
                 id='username-input'
-                value={values}
+                // value={signUpForm.password}
+                // onChange={makeChange}
                 name='password'
                 type='text'
             />
         </StyledLabel>
 
         <div>
-            <button onClick={loginSubmit} disabled={disabled}>Submit</button>
+            <button onClick={loginSubmit}>Submit</button>
         </div>
     </InputBackground>
     </StyledForm>

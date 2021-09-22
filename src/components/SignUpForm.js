@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
     background-color: #343633;
     padding-top: 2em;
-    padding-bottom: 5em;
+    padding-bottom: 11.9em;
 `
 
 const InputBackground = styled.div`
@@ -25,64 +26,99 @@ const InputBackground = styled.div`
 
 const StyledLabel = styled.label`
     margin-bottom: 1em;
-
+    color: #343633;
+`
+const StyledH2 = styled.h2`
+    color: #343633;
+`
+const StyledH3 = styled.h3`
+    color: #343633;
+`
+const StyledH4 = styled.h4`
+    color: #343633;
 `
 
-export default function SignUpForm(props) {
-    const {
-        values,
-        disabled,
-        errors,
-    } = props
+const initialFormValues = {
+    username: '',
+    password: '',
+    // first_name: '',
+    // last_name: '',
+    // email: '',
+}
 
+export default function SignUpForm() {
+    
     const history = useHistory();
+    const [formValues, setFormValues] = useState(initialFormValues);
 
-    const signUp = () => {
-        history.push('/Home')
-    }
+    const makeChange = evt => {
+        setFormValues({
+            ...formValues,[evt.target.name]: evt.target.value
+        })
+    };
+
+    const makeSubmit = evt => {
+        evt.preventDefault()
+        const newPerson = {
+            username: formValues.username,
+            password: formValues.password,
+            // first_name: formValues.first_name,
+            // last_name: formValues.last_name,
+            // email: formValues.email,
+            
+        }
+        axios.post("https://web-45-heroku-tb.herokuapp.com/api/auth/register", newPerson)
+        .then(res => {
+            console.log(res);
+        })
+        .catch((error) => {
+            console.log('this is the error',error);
+            })
+   
+        
+        };
+
+    const signUp = (evt) => {
+        evt.preventDefault();
+        history.push('/')
+    };
     
 
 return (
-<StyledForm id='signUp-form'>
-    <div className='form-group submit'>
-        <div className='errors'>
-            <div>{errors}</div>
-            <div>{errors}</div>
-            <div>{errors}</div>
-            <div>{errors}</div>
-            <div>{errors}</div>
-        </div>
-    </div>
-
+<StyledForm id='signUp-form' onSubmit={makeSubmit}>
+    
     <InputBackground className='form-group inputs'>
-        <h2>Welcome to the African Marketplace Sign Up Page!</h2>
-        <h3>Please complete the required information to create an account.</h3>
+        <StyledH2>Welcome to the African Marketplace Sign Up Page!</StyledH2>
+        <StyledH3>Please complete the required information to create an account.</StyledH3>
 
-        <h4>Username:</h4>
+        <StyledH4>Username:</StyledH4>
         <StyledLabel> 
             <input
                 id='username-input'
-                value={values}
+                value={formValues.username}
+                onChange={makeChange}
                 name='username'
                 type='text'
             />
         </StyledLabel>
 
-        <h4>Password:</h4>
+        <StyledH4>Password:</StyledH4>
         <StyledLabel> 
             <input
                 id='username-input'
-                value={values}
+                value={formValues.password}
+                onChange={makeChange}
                 name='password'
                 type='text'
             />
         </StyledLabel>
 
-        <h4>First Name:</h4>
+        {/* <h4>First Name:</h4>
         <StyledLabel> 
             <input
                 id='first_name-input'
-                value={values}
+                value={formValues.first_name}
+                onChange={makeChange}
                 name='first_name'
                 type='text'
             />
@@ -92,7 +128,8 @@ return (
         <StyledLabel> 
             <input
                 id='last_name-input'
-                value={values}
+                value={formValues.last_name}
+                onChange={makeChange}
                 name='last_name'
                 type='text'
             />
@@ -102,23 +139,24 @@ return (
         <StyledLabel> 
             <input
                 id='email-input'
-                value={values}
+                value={formValues.email}
+                onChange={makeChange}
                 name='email'
                 type='text'
             />
-        </StyledLabel>
+        </StyledLabel> */}
 
         
         <StyledLabel>Is your information correct?
             <input
-                value={values}
                 name='information'
                 type='checkbox'
             />
         </StyledLabel>
 
         <div>
-            <button onClick={signUp} id='signUp-button' disabled={disabled}>Sign Up!</button>
+            <button onClick={signUp} type="submit" id='signUp-button'>Sign Up!</button>
+            
             <button id='cancel-button'>Cancel</button>
         </div>
 
