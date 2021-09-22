@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -27,27 +27,39 @@ const StyledLabel = styled.label`
     margin-bottom: 1em;
 `
 
-const Login = (props) => {
-    const {
-        values,
-        disabled,
-        errors,
-    } = props
+const Login = () => {
+//     const [signUpForm, setSignUpForm] = useState({
+//         username: '',
+//         password: '',
+//     });
+
+//     const makeChange = evt => {
+//         setSignUpForm({
+//             ...signUpForm, [evt.target.name]: evt.target.value,
+//         })
+//     };
+
+//     const makeSubmit = evt => {
+//         evt.preventDefault();
+//         axiosWithAuth()
+//             .post('', signUpForm)
+//             .then((res) => {
+//                 localStorage.getItem('token', res.data.token);
+//                 push('');
+//             }).catch((error) => {
+//                 console.log(error);
+//             })
+//     };
 
     const history = useHistory();
 
     const loginSubmit = () => {
         history.push('/Home')
-    }
+    };
 
     return (
-    <StyledForm>
-
-        <div className='errors'>
-            <div>{errors}</div>
-            <div>{errors}</div>
-        </div>
-
+    <StyledForm >
+    {/* onSubmit={makeSubmit} */}
     <InputBackground className='form-group inputs'>
         <h2>Welcome to the African Marketplace Login Page!</h2>
         <h3>Please login with your required information.</h3>
@@ -56,7 +68,8 @@ const Login = (props) => {
         <StyledLabel> 
             <input
                 id='username-input'
-                value={values}
+                // value={signUpForm.username}
+                // onChange={makeChange}
                 name='username'
                 type='text'
             />
@@ -66,14 +79,15 @@ const Login = (props) => {
         <StyledLabel> 
             <input
                 id='username-input'
-                value={values}
+                // value={signUpForm.password}
+                // onChange={makeChange}
                 name='password'
                 type='text'
             />
         </StyledLabel>
 
         <div>
-            <button onClick={loginSubmit} disabled={disabled}>Submit</button>
+            <button onClick={loginSubmit}>Submit</button>
         </div>
     </InputBackground>
     </StyledForm>

@@ -35,13 +35,13 @@ function App() {
             <div className='nav-links'>
             </div>
         </StyledNav>
-      <Route path="/Home">
+      <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/signUpPage">
+      <Route exact path="/signUpPage">
         <SignUpPage/>
       </Route>
-      <Route path="/Login">
+      <Route exact path="/Login">
         <Login/>
       </Route>
       
