@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
@@ -28,32 +29,49 @@ const StyledLabel = styled.label`
 
 `
 
-export default function SignUpForm(props) {
-    const {
-        values,
-        disabled,
-        errors,
-    } = props
+const initialFormValues = {
+    username: '',
+    password: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+}
 
+export default function SignUpForm() {
+    
     const history = useHistory();
+    const [formValues, setFormValues] = useState(initialFormValues);
+
+    const makeChange = evt => {
+        setFormValues({
+            ...formValues,[evt.target.name]: evt.target.value
+        })
+    };
+
+    const makeSubmit = evt => {
+        evt.preventDefault()
+        const newPerson = {
+            username: formValues.username,
+            password: formValues.password,
+            first_name: formValues.first_name,
+            last_name: formValues.last_name,
+            email: formValues.email,
+            
+        }
+        axios.post("", newPerson)
+        .then(res => {
+            console.log(res);
+        })
+    };
 
     const signUp = () => {
         history.push('/Home')
-    }
+    };
     
 
 return (
-<StyledForm id='signUp-form'>
-    <div className='form-group submit'>
-        <div className='errors'>
-            <div>{errors}</div>
-            <div>{errors}</div>
-            <div>{errors}</div>
-            <div>{errors}</div>
-            <div>{errors}</div>
-        </div>
-    </div>
-
+<StyledForm id='signUp-form' onSubmit={makeSubmit}>
+    
     <InputBackground className='form-group inputs'>
         <h2>Welcome to the African Marketplace Sign Up Page!</h2>
         <h3>Please complete the required information to create an account.</h3>
@@ -62,7 +80,8 @@ return (
         <StyledLabel> 
             <input
                 id='username-input'
-                value={values}
+                value={formValues.username}
+                onChange={makeChange}
                 name='username'
                 type='text'
             />
@@ -72,7 +91,8 @@ return (
         <StyledLabel> 
             <input
                 id='username-input'
-                value={values}
+                value={formValues.password}
+                onChange={makeChange}
                 name='password'
                 type='text'
             />
@@ -82,7 +102,8 @@ return (
         <StyledLabel> 
             <input
                 id='first_name-input'
-                value={values}
+                value={formValues.first_name}
+                onChange={makeChange}
                 name='first_name'
                 type='text'
             />
@@ -92,7 +113,8 @@ return (
         <StyledLabel> 
             <input
                 id='last_name-input'
-                value={values}
+                value={formValues.last_name}
+                onChange={makeChange}
                 name='last_name'
                 type='text'
             />
@@ -102,7 +124,8 @@ return (
         <StyledLabel> 
             <input
                 id='email-input'
-                value={values}
+                value={formValues.email}
+                onChange={makeChange}
                 name='email'
                 type='text'
             />
@@ -111,14 +134,13 @@ return (
         
         <StyledLabel>Is your information correct?
             <input
-                value={values}
                 name='information'
                 type='checkbox'
             />
         </StyledLabel>
 
         <div>
-            <button onClick={signUp} id='signUp-button' disabled={disabled}>Sign Up!</button>
+            <button onClick={signUp} id='signUp-button'>Sign Up!</button>
             <button id='cancel-button'>Cancel</button>
         </div>
 
