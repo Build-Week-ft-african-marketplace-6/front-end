@@ -1,29 +1,33 @@
 import './App.css';
-import {Route, Link, Switch} from 'react-router-dom';
-import SignUpPage from './components/signUpPage';
+// import styled from 'styled-components';
+
+import React, { useState } from 'react';
+import {Route, Switch, Link} from 'react-router-dom';
+import { useHistory } from 'react-router'
+
+
+import SignUpForm from './components/SignUpForm';
 import Home from './components/Home';
 import Login from './components/Login';
-import CreateItem from './components/ItemCreation';
-import styled from 'styled-components';
+import Logout from './components/Logout';
+import CreateItem from './components/CreateItem';
+import ItemList from './components/ItemList';
+import PrivateRoute from './components/PrivateRoute';
+import Items from './components/items';
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  margin-left: 1em;
-  margin-right: 1em;
-  color: #343633;
-  &:hover {
-    color: #DEC1FF;
-  }
-`
-const StyledNav = styled.nav`
-  background-color: #5CC8FF;
-  padding: 2em;
-`
-const StyledH1 = styled.nav`
-  font-size: 4em;
-  color: #343633;
-  margin-bottom: .2em;
-`
+
+
+
+
+
+// const StyledNav = styled.nav`
+//   background-color: #5CC8FF;
+//   padding: 2em;
+// `
+// const StyledH1 = styled.nav`
+//   font-size: 4em;
+//   color: #343633;
+// `
 // const NavButton = styled.button`
 //   margin-right: 2em;
 //   background-color: transparent;
@@ -36,40 +40,60 @@ const StyledH1 = styled.nav`
 //   }
 // `
 
-function App() {
+export default function App() {
+  // const [items, setItems] = useState([])
+  const { push } = useHistory();
+
+        const onClickHeader = (e) => {
+        push('/')
+        }
+
+          const handleLogout = e => {
+            e.preventDefault();
+            localStorage.removeItem("token");
+            push('/')
+          }
+
+
+
 
   return (
     <div className="App">
-      <StyledNav>
-            <StyledH1>African Marketplace</StyledH1>
-            <div className='nav-links'>
-              <nav>
-                <StyledLink to="/signUpPage">Sign Up</StyledLink>
-                <StyledLink to="/Login">Login</StyledLink>
-                <StyledLink to="/">Home</StyledLink>
-                <StyledLink to="/Items">Items</StyledLink>
-                <StyledLink to="/CreateItem">Item Creation</StyledLink>
-                <StyledLink to="/ItemList">Item List</StyledLink>
-                <StyledLink to="/Logout">Logout</StyledLink>
-                
-              </nav>
-            </div>
-        </StyledNav>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route exact path="/signUpPage">
-        <SignUpPage/>
-      </Route>
-      <Route exact path="/Login">
-        <Login/>
-      </Route>
-      <Route exact path="/CreateItem">
-        <CreateItem />
-      </Route>
       
-    </div>
+
+      
+                            <div>
+                                <h1 onClick={onClickHeader}>Africa's Favorite Marketplace</h1>
+                            </div>
+      
+                  <nav>
+                        <div>
+                          <a> {localStorage.getItem('token') && <Link to='/protected'>Create New Item </Link>} </a>
+                          <a> <Link to="/ItemList" component={ItemList}>All Items</Link> </a>
+                          <a> <Link to="/SignUpForm"></Link>Sign Up</a>
+                          <a> <Link to="/Login"></Link>Login</a>
+                          <a href='#'onClick={handleLogout}>Logout</a>
+                        </div>
+                </nav>
+      
+      <Switch>
+        <PrivateRoute path="/" component={CreateItem} />
+              <Route path="/ItemList" render={() => <ItemList/>}/>
+        <PrivateRoute path="/Logout" component={Logout}/>
+              <Route path="/SignUpForm" component={SignUpForm}/>
+              <Route path="/Login" component={Login}/>
+              <Route exact path="/"><Home/></Route>
+
+      </Switch>
+      
+      
+      
+      
+      </div>
+  
+  
+  
   );
 }
 
-export default App;
+
