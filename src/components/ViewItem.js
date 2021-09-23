@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 const ViewItem = (props) => {
-    const {name, seller, description, location, price, id} = props.ViewItem
+    const {id, name, seller, description, location, price,} = props.ViewItem
 
     return(
         <tr key={id}>
@@ -13,7 +13,8 @@ const ViewItem = (props) => {
             <td>{seller}</td>
             <td>{price}</td>
             <td> 
-                <Link to={`/Item-List/${id}`}><input type="buton" value="view"/></Link></td>
+                <Link to={`/item-list/${id}`} className="view"><input type="button" value="view"/></Link>
+            </td>
 
         </tr>
     )

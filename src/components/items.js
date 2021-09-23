@@ -5,7 +5,8 @@ import axios from 'axios';
 
 const Items = (props) => {
     const [ item, setItem ] = useState({})
-    const { id } = props.match.params
+    const { id } = useParams();
+    const { push } = useHistory();
 
     useEffect(() => {
         axios.get(`https://web-45-heroku-tb.herokuapp.com/api/items/${id}`)
@@ -15,7 +16,8 @@ const Items = (props) => {
         .catch(err => {
             console.log(err)
         })
-    }, [])
+    }, [props.history.id] 
+    )
 
 return(
     <div>
@@ -28,4 +30,4 @@ return(
 )
 }
 
-export default Items
+export default Items;
