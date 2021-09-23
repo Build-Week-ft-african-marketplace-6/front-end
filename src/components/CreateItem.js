@@ -10,7 +10,6 @@ export default function CreateItem(props){
     const [ item, setItem ] = useState({
         item_name: '',
         item_description: '',
-        item_price: '',
         item_country: '',
         item_price: '',
         username: '',
@@ -33,7 +32,7 @@ export default function CreateItem(props){
             item_description: item.item_description,
         };
         //console log newItem to see it move
-        axios.post(`endpoint`, newItem)
+        axios.post(`https://web-45-heroku-tb.herokuapp.com/api/items`, newItem)
         .then(res => {
             props.newItem(res.data)
         })

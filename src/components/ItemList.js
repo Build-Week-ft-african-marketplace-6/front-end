@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -13,7 +13,7 @@ const ItemList = () => {
    
    useEffect(() => {
     const getItems = () => {
-     axios.get('heroku')
+     axios.get('https://web-45-heroku-tb.herokuapp.com/api/items')
         .then(res => {
             setItems(res.data)
             console.log(res.data)

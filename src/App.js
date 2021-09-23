@@ -13,7 +13,6 @@ import Logout from './components/Logout';
 import CreateItem from './components/CreateItem';
 import ItemList from './components/ItemList';
 import PrivateRoute from './components/PrivateRoute';
-import Items from './components/items';
 
 
 
@@ -69,7 +68,7 @@ export default function App() {
                   <nav>
                         <div>
                           <a> {localStorage.getItem('token') && <Link to='/protected'>Create New Item </Link>} </a>
-                          <a> <Link to="/ItemList" component={ItemList}>All Items</Link> </a>
+                          <a> <Link to="/item-list" component={ItemList}>All Items</Link> </a>
                           <a> <Link to="/SignUpForm"></Link>Sign Up</a>
                           <a> <Link to="/Login"></Link>Login</a>
                           <a href='#'onClick={handleLogout}>Logout</a>
@@ -77,12 +76,12 @@ export default function App() {
                 </nav>
       
       <Switch>
-        <PrivateRoute path="/" component={CreateItem} />
-              <Route path="/ItemList" render={() => <ItemList/>}/>
+        <PrivateRoute exact path="/protected" component={CreateItem} />
+              <Route path="/item-list" render={() => <ItemList/>}/>
         <PrivateRoute path="/Logout" component={Logout}/>
               <Route path="/SignUpForm" component={SignUpForm}/>
               <Route path="/Login" component={Login}/>
-              <Route exact path="/"><Home/></Route>
+              <Route path="/"><Home/></Route>
 
       </Switch>
       
