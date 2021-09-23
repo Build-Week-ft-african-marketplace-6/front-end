@@ -2,6 +2,52 @@ import React, {Component, useState, useEffect} from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import styled from 'styled-components';
+
+const StyledBack = styled.div`
+    background-color: #343633;
+    padding-top: 2em;
+    padding-bottom: 25.9em;
+`
+
+const StyledItemList = styled.div`
+  background-color: #343633;
+  width: 100%;
+  padding-bottom: 5em;
+`
+
+const InputBackground = styled.header`
+    background-color: #7D70BA;
+    width: 50%;
+    margin: 0 auto;
+    padding: 2em;
+    border: 10px solid #DEC1FF;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5em;
+`
+const StyledP = styled.p`
+  width: 50%;
+  font-size: 2em;
+  color: #343633;
+  margin: 0 auto;
+  padding: 2em;
+`
+const StyledButton = styled.button`
+  margin-right: 2em;
+  margin-left: 2em;
+  background-color: transparent;
+  border: none;
+  font-size: 2em;
+  text-decoration: none;
+  color: #DEC1FF;
+  &:hover {
+    color: #5CC8FF;
+  }
+`
 
 
 
@@ -38,12 +84,12 @@ const ItemList = () => {
 
 
      return(
-        <>
-        <header>
+        <StyledBack>
+        <InputBackground>
              <h1>Here are items that can be found in the Market</h1>
              <p> Click here if you have items for sale</p>
-             <Link to ="/protected"><button>Add your item</button></Link>
-         </header>
+             <Link to ="/protected"><StyledButton>Add your item</StyledButton></Link>
+         </InputBackground>
 
          <div>
              {items.map(item=> (
@@ -56,7 +102,7 @@ const ItemList = () => {
                 </div>
              ))}
          </div>
-         </>
+         </StyledBack>
      )
 }
 export default ItemList

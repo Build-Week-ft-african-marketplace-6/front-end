@@ -37,33 +37,36 @@ const StyledH4 = styled.h4`
 `
 
 const Login = () => {
-//     const [signUpForm, setSignUpForm] = useState({
-//         username: '',
-//         password: '',
-//     });
+    // const [signUpForm, setSignUpForm] = useState({
+    //     username: '',
+    //     password: '',
+    // });
 
-//     const makeChange = evt => {
-//         setSignUpForm({
-//             ...signUpForm, [evt.target.name]: evt.target.value,
-//         })
-//     };
+    // const { push } = useHistory();
 
-//     const makeSubmit = evt => {
-//         evt.preventDefault();
-//         axiosWithAuth()
-//             .post('https://web-45-heroku-tb.herokuapp.com/api/auth/login', signUpForm)
-//             .then((res) => {
-//                 localStorage.getItem('token', res.data.token);
-//                 push('/');
-//             }).catch((error) => {
-//                 console.log(error);
-//             })
-//     };
+    // const makeChange = evt => {
+    //     setSignUpForm({
+    //         ...signUpForm, [evt.target.name]: evt.target.value,
+    //     })
+    // };
+
+    // const makeSubmit = evt => {
+    //     evt.preventDefault();
+    //     axiosWithAuth()
+    //         .post('https://web-45-heroku-tb.herokuapp.com/api/auth/login', signUpForm)
+    //         .then((res) => {
+    //             localStorage.getItem('token', res.data.token);
+    //             console.log(res.data);
+    //             push('/');
+    //         }).catch((error) => {
+    //             console.log(error);
+    //         })
+    // };
 
     const history = useHistory();
 
     const loginSubmit = () => {
-        history.push('/items')
+        history.push('/ItemList')
     };
 
     return (
