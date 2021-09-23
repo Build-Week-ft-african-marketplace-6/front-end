@@ -80,7 +80,7 @@ export default function SignUpForm() {
 
     const signUp = (evt) => {
         evt.preventDefault();
-        history.push('/')
+        history.push('/Login')
     };
     
 
