@@ -1,5 +1,4 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
 import styled from 'styled-components';
 import Image from '../Assets/marketLady.jpg';
 
@@ -28,19 +27,6 @@ const StyledP = styled.p`
   color: #343633;
   margin: 0 auto;
   padding: 2em;
-`
-const NavButton = styled.button`
-  margin-top: 2em;
-  margin-right: 2em;
-  margin-left: 2em;
-  background-color: transparent;
-  border: none;
-  font-size: 2em;
-  text-decoration: none;
-  color: #DEC1FF;
-  &:hover {
-    color: #5CC8FF;
-  }
 `
 
 
