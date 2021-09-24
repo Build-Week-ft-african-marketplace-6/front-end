@@ -88,7 +88,7 @@ const ItemList = () => {
         <InputBackground>
              <h1>Here are items that can be found in the Market</h1>
              <p> Click here if you have items for sale</p>
-             <Link to ="/protected"><StyledButton>Add your item</StyledButton></Link>
+             <Link to ="/ItemList" component={ItemList}><StyledButton>Add your item</StyledButton></Link>
          </InputBackground>
 
          <div>
@@ -104,5 +104,5 @@ const ItemList = () => {
          </div>
          </StyledBack>
      )
-}
+};
 export default ItemList

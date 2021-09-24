@@ -1,45 +1,53 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from 'react'
+import axiosWithAuth from '../components/axiosWithAuth';
+
+const initialFormValues = {
+    item_name: '',
+    item_description: '',
+    item_country: '',
+    item_price: '',
+    username: '',
+}
+
+export default function CreateItem(){
+    
 
 
-export default function CreateItem(props){
-    const { push } = useHistory()
-
-
-    const [ item, setItem ] = useState({
-        item_name: '',
-        item_description: '',
-        item_country: '',
-        item_price: '',
-        username: '',
-    })
+    const [ formValues, setFormValues ] = useState(initialFormValues)
+ 
     const handleChange = e => {
-        setItem({
-            ...item, 
-            [e.target.name]: e.target.value,
-        })
-    }
+        const {name, value } = e.target
+            setFormValues({ ...formValues, [name]: value })
+          };
+    
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventdefault();
-        push('/item-list')
+        
         const newItem = {
-            item_country: item.item_country,
-            item_name: item.item_name,
-            username: item.username,
-            item_price: item.item_price,
-            item_description: item.item_description,
+            item_country: formValues.item_country,
+            item_name: formValues.item_name,
+            username: formValues.username,
+            item_price: formValues.item_price,
+            item_description: formValues.item_description,
         };
         //console log newItem to see it move
-        axios.post(`https://web-45-heroku-tb.herokuapp.com/api/items`, newItem)
-        .then(res => {
-            props.newItem(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
+
+        axiosWithAuth()
+        .post('/items/', newItem)
+        .then(res=>{console.log(res)})
+        .catch(err=>{console.log(err)});
+      setFormValues(initialFormValues);
+    };
+
+    //     axios.post(`https://web-45-heroku-tb.herokuapp.com/api/items`, newItem)
+    //     .then(res => {
+    //         props.newItem(res.data)
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     })
+    // }
    
     return(
         <div>
@@ -47,7 +55,7 @@ export default function CreateItem(props){
                 <h3>Fill in this form to <br></br>add your item to the marketplace.</h3>
                 <div>
                     <input
-                    value={item.item_name}
+                    value={formValues.item_name}
                     onChange={handleChange}
                     name="item_name"
                     type="text"
@@ -56,7 +64,7 @@ export default function CreateItem(props){
                 </div>
                 <div>
                     <input
-                    value={item.item_description}
+                    value={formValues.item_description}
                     onChange={handleChange}
                     name="item_description"
                     type="text"
@@ -65,7 +73,7 @@ export default function CreateItem(props){
                 </div>
                 <div>
                     <input
-                    value={item.item_price}
+                    value={formValues.item_price}
                     onChange={handleChange}
                     name="item_price"
                     type="text"
@@ -74,7 +82,7 @@ export default function CreateItem(props){
                 </div>
                 <div>
                     <input
-                    value={item.username}
+                    value={formValues.username}
                     onChange={handleChange}
                     name="username"
                     type="text"
@@ -83,7 +91,7 @@ export default function CreateItem(props){
                 </div>
                 <div>
                     <select
-                    value={item.item_country}
+                    value={formValues.item_country}
                     onChange={handleChange}
                     name="item_country"
                     type="tex"

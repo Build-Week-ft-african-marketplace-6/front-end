@@ -1,24 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router';
-import axios from 'axios';
+import React from 'react';
 
 
-const Items = (props) => {
-    const [ item, setItem ] = useState({})
-    const { id } = useParams();
-    const { push } = useHistory();
 
-    useEffect(() => {
-        axios.get(`https://web-45-heroku-tb.herokuapp.com/api/items/${id}`)
-        .then(res => {
-            setItem(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }, [props.history.id] 
-    )
-
+export default function Items (props){
+    const { item } = props
 return(
     <div>
         <h2>{item.item_name}</h2>
@@ -30,4 +15,3 @@ return(
 )
 }
 
-export default Items;
