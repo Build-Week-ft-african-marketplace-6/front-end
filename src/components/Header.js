@@ -52,7 +52,7 @@ const StyledH1 = styled.nav`
 
 
 
-const NavBar = ( props ) =>{
+const Header = ( props ) =>{
     const { loggedIn } = props;
     const { push } = useHistory();
 
@@ -112,4 +112,4 @@ const NavBar = ( props ) =>{
     )
 
 }
-export default NavBar
+export default Header

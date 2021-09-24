@@ -10,7 +10,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import CreateItem from './components/CreateItem';
 import ItemList from './components/ItemList';
-import NavBar from './components/Header';
+import Header from './components/Header';
 
 
 
@@ -34,7 +34,7 @@ function App() {
   
   return (
     <div className="App">
-      <NavBar loggedIn={loggedIn}/>
+      <Header loggedIn={loggedIn}/>
 
       <Switch>
               <Route path="/CreateItem"> <CreateItem /></Route>
