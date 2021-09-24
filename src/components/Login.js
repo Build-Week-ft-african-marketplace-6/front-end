@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
@@ -37,31 +38,31 @@ const StyledH4 = styled.h4`
 `
 
 const Login = () => {
-    // const [signUpForm, setSignUpForm] = useState({
-    //     username: '',
-    //     password: '',
-    // });
+    const [signUpForm, setSignUpForm] = useState({
+        username: '',
+        password: '',
+    });
 
-    // const { push } = useHistory();
+    const { push } = useHistory();
 
-    // const makeChange = evt => {
-    //     setSignUpForm({
-    //         ...signUpForm, [evt.target.name]: evt.target.value,
-    //     })
-    // };
+    const makeChange = evt => {
+        setSignUpForm({
+            ...signUpForm, [evt.target.name]: evt.target.value,
+        })
+    };
 
-    // const makeSubmit = evt => {
-    //     evt.preventDefault();
-    //     axiosWithAuth()
-    //         .post('https://web-45-heroku-tb.herokuapp.com/api/auth/login', signUpForm)
-    //         .then((res) => {
-    //             localStorage.getItem('token', res.data.token);
-    //             console.log(res.data);
-    //             push('/');
-    //         }).catch((error) => {
-    //             console.log(error);
-    //         })
-    // };
+    const makeSubmit = evt => {
+        evt.preventDefault();
+        // axiosWithAuth()
+            axios.post('https://web-45-heroku-tb.herokuapp.com/api/auth/login', signUpForm)
+            .then((res) => {
+                // localStorage.getItem('token', res.data.token);
+                console.log(res.data);
+                push('/');
+            }).catch((error) => {
+                console.log(error);
+            })
+    };
 
     const history = useHistory();
 
@@ -71,7 +72,7 @@ const Login = () => {
 
     return (
     <StyledForm >
-    {/* onSubmit={makeSubmit} */}
+    onSubmit={makeSubmit}
     <InputBackground className='form-group inputs'>
         <StyledH2>Welcome to the African Marketplace Login Page!</StyledH2>
         <StyledH3>Please login with your required information.</StyledH3>
@@ -80,8 +81,8 @@ const Login = () => {
         <StyledLabel> 
             <input
                 id='username-input'
-                // value={signUpForm.username}
-                // onChange={makeChange}
+                value={signUpForm.username}
+                onChange={makeChange}
                 name='username'
                 type='text'
             />
@@ -91,8 +92,8 @@ const Login = () => {
         <StyledLabel> 
             <input
                 id='username-input'
-                // value={signUpForm.password}
-                // onChange={makeChange}
+                value={signUpForm.password}
+                onChange={makeChange}
                 name='password'
                 type='text'
             />

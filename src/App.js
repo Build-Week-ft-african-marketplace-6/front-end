@@ -42,17 +42,6 @@ const StyledH1 = styled.nav`
   font-size: 4em;
   color: #343633;
 `
-// const NavButton = styled.button`
-  // margin-right: 2em;
-  // background-color: transparent;
-  // border: none;
-  // font-size: 2em;
-  // text-decoration: none;
-  // color: #343633;
-  // &:hover {
-  //   color: #DEC1FF;
-  // }
-// `
 
 export default function App() {
   // const [items, setItems] = useState([])

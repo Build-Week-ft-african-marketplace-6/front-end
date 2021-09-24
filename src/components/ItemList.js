@@ -10,12 +10,6 @@ const StyledBack = styled.div`
     padding-bottom: 25.9em;
 `
 
-const StyledItemList = styled.div`
-  background-color: #343633;
-  width: 100%;
-  padding-bottom: 5em;
-`
-
 const InputBackground = styled.header`
     background-color: #7D70BA;
     width: 50%;
@@ -29,13 +23,7 @@ const InputBackground = styled.header`
     flex-direction: column;
     margin-top: 5em;
 `
-const StyledP = styled.p`
-  width: 50%;
-  font-size: 2em;
-  color: #343633;
-  margin: 0 auto;
-  padding: 2em;
-`
+
 const StyledButton = styled.button`
   margin-right: 2em;
   margin-left: 2em;
@@ -48,9 +36,6 @@ const StyledButton = styled.button`
     color: #5CC8FF;
   }
 `
-
-
-
 
 const ItemList = () => {
    const [ items, setItems ] = useState([])

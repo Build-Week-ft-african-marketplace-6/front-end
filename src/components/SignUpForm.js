@@ -41,9 +41,6 @@ const StyledH4 = styled.h4`
 const initialFormValues = {
     username: '',
     password: '',
-    // first_name: '',
-    // last_name: '',
-    // email: '',
 }
 
 export default function SignUpForm() {
@@ -53,7 +50,7 @@ export default function SignUpForm() {
 
     const makeChange = evt => {
         setFormValues({
-            ...formValues,[evt.target.name]: evt.target.value
+            ...formValues, [evt.target.name]: evt.target.value
         })
     };
 
@@ -62,9 +59,6 @@ export default function SignUpForm() {
         const newPerson = {
             username: formValues.username,
             password: formValues.password,
-            // first_name: formValues.first_name,
-            // last_name: formValues.last_name,
-            // email: formValues.email,
             
         }
         axios.post("https://web-45-heroku-tb.herokuapp.com/api/auth/register", newPerson)
@@ -112,40 +106,6 @@ return (
                 type='text'
             />
         </StyledLabel>
-
-        {/* <h4>First Name:</h4>
-        <StyledLabel> 
-            <input
-                id='first_name-input'
-                value={formValues.first_name}
-                onChange={makeChange}
-                name='first_name'
-                type='text'
-            />
-        </StyledLabel>
-
-        <h4>Last Name:</h4>
-        <StyledLabel> 
-            <input
-                id='last_name-input'
-                value={formValues.last_name}
-                onChange={makeChange}
-                name='last_name'
-                type='text'
-            />
-        </StyledLabel>
-
-        <h4>Email:</h4>
-        <StyledLabel> 
-            <input
-                id='email-input'
-                value={formValues.email}
-                onChange={makeChange}
-                name='email'
-                type='text'
-            />
-        </StyledLabel> */}
-
         
         <StyledLabel>Is your information correct?
             <input
