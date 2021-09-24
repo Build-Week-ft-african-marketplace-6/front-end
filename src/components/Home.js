@@ -1,7 +1,8 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+// import {useHistory} from 'react-router-dom';
 import styled from 'styled-components';
 import Image from '../Assets/marketLady.jpg';
+import Header from './Header';
 
 const StyledHome = styled.div`
   background-color: #343633;
@@ -29,19 +30,19 @@ const StyledP = styled.p`
   margin: 0 auto;
   padding: 2em;
 `
-const NavButton = styled.button`
-  margin-top: 2em;
-  margin-right: 2em;
-  margin-left: 2em;
-  background-color: transparent;
-  border: none;
-  font-size: 2em;
-  text-decoration: none;
-  color: #DEC1FF;
-  &:hover {
-    color: #5CC8FF;
-  }
-`
+// const NavButton = styled.button`
+//   margin-top: 2em;
+//   margin-right: 2em;
+//   margin-left: 2em;
+//   background-color: transparent;
+//   border: none;
+//   font-size: 2em;
+//   text-decoration: none;
+//   color: #DEC1FF;
+//   &:hover {
+//     color: #5CC8FF;
+//   }
+// `
 
 
 export default function Home() {
@@ -63,8 +64,7 @@ export default function Home() {
           <StyledP>Sauti African Marketplace empowers small business owners, particularly women, to improve their business and economic opportunities to grow out of poverty.</StyledP>
         </StyledPBox>
         <div>
-          {/* <NavButton onClick={linkSignUp}>Sign Up!</NavButton>
-          <NavButton onClick={linkLogin}>Login!</NavButton> */}
+          <Header/>
         </div>
       </StyledHome>
       

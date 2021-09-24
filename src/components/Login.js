@@ -59,7 +59,7 @@ const Login = (props) => {
             .post('https://web-45-heroku-tb.herokuapp.com/api/auth/login', formValues)
             .then((res) => {
                 localStorage.getItem('authorization', res.data.token);
-                console.log(res.data);
+                setLoggedIn(true);
                 push('/');
             }).catch((error) => {
                 console.log(error);

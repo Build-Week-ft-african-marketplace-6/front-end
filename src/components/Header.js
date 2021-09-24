@@ -100,7 +100,7 @@ const Header = ( props ) =>{
                           <StyledAnchor> <StyledLink to="/ItemList" component={ItemList}>All Items</StyledLink> </StyledAnchor>
                           <StyledAnchor> <StyledLink to="/CreateItem" component={CreateItem}>Sign Up</StyledLink></StyledAnchor>
                           <StyledAnchor> <StyledLink to="/Login">Login</StyledLink></StyledAnchor>
-                          <StyledAnchor href='#'onClick={handleLogout}><StyledLink to="/">Logout</StyledLink></StyledAnchor>
+                          <StyledAnchor ><StyledLink to="/Logout">Logout</StyledLink></StyledAnchor>
                         </nav>
                 </StyledNav>
         

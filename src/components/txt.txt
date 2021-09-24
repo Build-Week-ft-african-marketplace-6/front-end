@@ -1,0 +1,24 @@
+
+                <StyledNav>
+                            <div>
+                                <StyledH1 onClick={onClickHeader}>Africa's Favorite Marketplace</StyledH1>
+                            </div>
+      
+                  
+                        <div>
+                          <StyledAnchor> {localStorage.getItem('authorization') && <Link to='/CreateItem'>Create New Item </Link>} </StyledAnchor>
+                          {/* <StyledAnchor> <StyledLink to="/ItemList" component={ItemList}>All Items</StyledLink> </StyledAnchor> */}
+                          <StyledAnchor> <StyledLink to="/SignUpForm">Sign Up</StyledLink></StyledAnchor>
+                          <StyledAnchor> <StyledLink to="/Login">Login</StyledLink></StyledAnchor>
+                          <StyledAnchor href='#'onClick={handleLogout}><StyledLink to="/">Logout</StyledLink></StyledAnchor>
+                        </div>
+                </StyledNav>
+      
+
+
+
+      const handleLogout = e => {
+            e.preventDefault();
+            localStorage.removeItem("token");
+            push('/')
+          }
